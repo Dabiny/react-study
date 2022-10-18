@@ -1,5 +1,6 @@
 // 3.3.6
 import PropTypes from "prop-types";
+import { Component } from "react";
 
 // 3.2
 // const MyComponent = () => {
@@ -42,32 +43,55 @@ import PropTypes from "prop-types";
 //   );
 // };
 
-// 3.3.6 위 임포트 default를 해주고 밑에 propTypes를 지정해준다. 
-const MyComponent = ({ name, children, favoriteNumber }) => {
-  return (
-    <div>
-      안녕하세요, 제 이름은 {name} 입니다. <br />
-      children값은 {children} 입니다. <br />
-      제가 좋아하는 숫자는 {favoriteNumber} 입니다.
-    </div>
-  );
-};
+// 3.3.6 위 임포트 default를 해주고 밑에 propTypes를 지정해준다.
+// const MyComponent = ({ name, children, favoriteNumber }) => {
+//   return (
+//     <div>
+//       안녕하세요, 제 이름은 {name} 입니다. <br />
+//       children값은 {children} 입니다. <br />
+//       제가 좋아하는 숫자는 {favoriteNumber} 입니다.
+//     </div>
+//   );
+// };
+
+// 3.3.7 클래스형 컴포넌트로 바꾸기
+class MyComponent extends Component {
+  static defaultProps = { //클래스 안에 static 함수로 넣어서 클래스 내부에 설정할 수도 있다. 
+    name: '기본 이름'
+  };
+
+  static propTypes = { // 마찬가지
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired
+  };
+
+  render() {
+    const { name, favoriteNumber, children } = this.props;
+    return (
+      <div>
+        안녕하세요, 제 이름은 {name} 입니다. <br />
+        children값은 {children} 입니다. <br />
+        제가 좋아하는 숫자는 {favoriteNumber} 입니다.
+      </div>
+    );
+  }
+}
 
 // 3.3.3 디폴트로 props가 정해지지 않아도 기본값 정하기
-MyComponent.defaultProps = {
-  name: "기본 이름",
-};
+// MyComponent.defaultProps = {
+//   name: "기본 이름",
+// };
 
 // 3.3.6 propTypes 지정해주기
-MyComponent.propTypes = {
-  name: PropTypes.string,
-  // name값은 무조건 문자열 형태로 전달해야 된다는 것을 의미한다.
-  // 만약 string이 아닌 다른 자료형을 prop.name에 받는다면 console창에 오류가 뜬다.
-  // Warning: Failed prop type: Invalid prop `name` of type `number` supplied to `MyComponent`, expected `string`.
+// MyComponent.propTypes = {
+//   name: PropTypes.string,
+//   // name값은 무조건 문자열 형태로 전달해야 된다는 것을 의미한다.
+//   // 만약 string이 아닌 다른 자료형을 prop.name에 받는다면 console창에 오류가 뜬다.
+//   // Warning: Failed prop type: Invalid prop `name` of type `number` supplied to `MyComponent`, expected `string`.
 
-  // 3.3.6.1 isRequired 붙이기
-  favoriteNumber: PropTypes.number.isRequired,
-  // propTypes를 지정하지 ㅇ낳았을 때 경고 메세지를 띄워주는 역할.
-  // Warning: Failed prop type: Invalid prop `favoriteNumber` of type `string` supplied to `MyComponent`, expected `number`.
-};
+//   // 3.3.6.1 isRequired 붙이기
+//   favoriteNumber: PropTypes.number.isRequired,
+//   // propTypes를 지정하지 ㅇ낳았을 때 경고 메세지를 띄워주는 역할.
+//   // Warning: Failed prop type: Invalid prop `favoriteNumber` of type `string` supplied to `MyComponent`, expected `number`.
+// };
 export default MyComponent;
