@@ -24,7 +24,7 @@ class Counter extends Component {
                 <h1>{number}</h1>
                 <h2>바뀌지 않는 값: {fixedNumber} </h2>
                 <button
-                    // onClick을 통해 버튼이 클릭 되었을 때 호출할 함수를 지정한다. 
+                    // //onClick을 통해 버튼이 클릭 되었을 때 호출할 함수를 지정한다. 
                     // onClick={() => {
                     //     this.setState({
                     //         number: number + 1
@@ -35,7 +35,7 @@ class Counter extends Component {
                     //     });
                     // }}
 
-                    //3.4.1.3 해결책
+                    // //3.4.1.3 해결책
                     // onClick={() => { // onClick되었을때 호출할 함수를 지정한다. 
                     //     this.setState(prevState => {
                     //         return {
