@@ -5,7 +5,7 @@ class EventPractice extends Component {
     state = {
         message: ''
     }
-    // 꼭 생성자에 함수바인딩초기화를 해주어야한다. (4.2.3.1)
+    // // 꼭 생성자에 함수바인딩초기화를 해주어야한다. (4.2.3.1)
     // constructor(props) {
     //     super(props);
     //     this.handleChange = this.handleChange.bind(this);
