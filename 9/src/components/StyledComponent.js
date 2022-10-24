@@ -1,8 +1,23 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from "styled-components";
+//@media가 중복사용되는 것을 막기위해 (귀찮아지고 코드도 길어짐) 함수화 하기
+const size = {
+    desktop: 1024,
+    tablet: 768,
+};
 
-const Box = styled.div `
+// 위에있는 size객체에 따라 자동으로 media쿼리 함수를 만들어 줄것이다. (여기 다시분석하기)
+const media = Object.keys(size).reduce((acc, label) => {
+    acc[label] = (...args) => css`
+        @media (max-width: ${size[label] / 16}em) {
+            ${css(...args)};
+        }
+    `;
+    return acc;
+}, {});
+
+const Box = styled.div`
     /* props로 넣어준 값을 직접 전달할 수 있다. */
-    background: ${props => props.color || 'blue'};
+    background: ${(props) => props.color || "blue"};
     padding: 1rem;
     display: flex;
 
@@ -10,15 +25,11 @@ const Box = styled.div `
     작아짐에 따라 크기를 줄이고 768px 미만이 되면 꽉 채우기 */
     width: 1024px;
     margin: 0 auto;
-    @media (max-width: 1024px) {
-        width: 768px;
-    }
-    @media (max-width: 768px) {
-        width: 100%;
-    }
+    ${media.desktop`width: 768px`}
+    ${media.tablet`width: 100%`};
 `;
 
-const Button = styled.button `
+const Button = styled.button`
     background: white;
     color: black;
     border-radius: 4px;
@@ -36,9 +47,9 @@ const Button = styled.button `
     }
 
     /* 다음 코드는 inverted 값이 true일때 특정 스타일링을 부여해준다. */
-    ${props => 
+    ${(props) =>
         props.inverted &&
-        css `
+        css`
             background: none;
             border: 2px solid white;
             color: white;
@@ -47,17 +58,16 @@ const Button = styled.button `
                 background: white;
                 color: black;
             }
-        `
-    };
+        `};
 `;
 
 const StyleComponent = () => {
     return (
-        <Box color='skyblue'>
+        <Box color="skyblue">
             <Button>안녕하세요</Button>
             <Button inverted={true}>테투리만</Button>
         </Box>
-    )
+    );
 };
 
 export default StyleComponent;
