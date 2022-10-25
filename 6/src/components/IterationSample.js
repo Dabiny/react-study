@@ -11,9 +11,9 @@ import { useState } from "react";
 //     );
 // };
 
-// li가 반복중이다.
+// // li가 반복중이다.
 
-// map으로 해결하기
+// // map으로 해결하기
 // const IterationSample = () => {
 //     const names = ['눈사람', '얼음', '눈', '바람'];
 //     const nameList = names.map((name, idx)=> <li key={idx}>{name}</li>);
