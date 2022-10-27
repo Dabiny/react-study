@@ -6,7 +6,7 @@ class LifeCycleSample extends Component {
         color: null
     }
 
-    myRef = null; // ref을 설정할 부분
+    myRef = null; // ref을 설정할 부분 h1 DOM요소가 연결됨.
 
     constructor(props) {
         super(props);
@@ -14,6 +14,7 @@ class LifeCycleSample extends Component {
     }
 
     // prop로 받아온 값을 state에 동기화 시키는 용도, 컴포넌트가 마운트 될때마다 업데이트될때 호출한다. 
+    // 부모로부터 받은 color값을 state에 동기화 시킨다. 
     static getDerivedStateFromProps(nextProps, prevState){
         console.log(
             "getDerivedStateFromProps: prop로 받아온 값을 state에 동기화 시키는 용도, 컴포넌트가 마운트 될때마다 업데이트될때 호출한다."
