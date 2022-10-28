@@ -21,7 +21,7 @@ function reducer(state, action) {
 }
 
 const Counter2 = () => {
-    // const [state, dispatch] = useReducer(reducer, {value: 0});
+    //const [state, dispatch] = useReducer(reducer, {value: 0});
 
     const [state, dispatch] = useReducer(reducer, {
         name: '',
@@ -30,6 +30,7 @@ const Counter2 = () => {
     
     const { name, nickname } = state;
     const onChange = (e) => {
+        console.log(e.target);
         dispatch(e.target);
     };
 

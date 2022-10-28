@@ -25,10 +25,10 @@ function App() {
   // );
 
   // useReducer
-  // return <Counter2 />
+  return <Counter2 />
 
   // return <Info2 />
-  return <Average />
+  //return <Average />
 }
 
 export default App;
