@@ -6,7 +6,6 @@
     // 화면 가로크기가 768미만이면 배경색을 어둡게 해준다.
     @include media("<768px") {
         background: $oc-gray-9;
-        font-color: "white";
     }
     .box {
         // .SassComponent .box와 같다.
