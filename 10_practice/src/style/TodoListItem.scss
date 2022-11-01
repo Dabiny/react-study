@@ -1,0 +1,53 @@
+.TodoListItem {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+
+    &:nth-child(even) {
+        background: rgb(255, 252, 245);
+    }
+
+    .check-box {
+        cursor: pointer;
+        flex: 1;
+        display: flex;
+        align-items: center;
+
+        svg {
+            font-size: 1.1rem;
+            color: rgb(170, 169, 167);
+        }
+
+        .text {
+            margin-left: 0.5rem;
+            flex: 1;
+        }
+
+        &.checked {
+            svg {
+                color: cadetblue;
+            }
+            .text {
+                color: rgb(102, 102, 102);
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    .remove-btn {
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
+
+        color: rosybrown;
+
+        &:hover {
+            color: rgb(212, 57, 40);
+        }
+    }
+
+    & + & {
+        border-top: 0.5px solid gainsboro;
+    }
+}
