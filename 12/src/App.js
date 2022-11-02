@@ -7,63 +7,98 @@ function App() {
         username: "",
         name: "",
     });
-
     const [data, setData] = useState({
         array: [],
         uselessValue: null,
     });
 
+    // form 등록을 위한 함수
     const onSubmit = useCallback(
-        (e) => {
-            e.preventDefault();
+        (event) => {
+            event.preventDefault();
             const info = {
                 id: nextId.current,
                 name: form.name,
                 username: form.username,
             };
 
-            // setData({
+            // setData({ // immer 사용전
             //     ...data,
-            //     array: data.array.concat(info),
+            //     array: data.array.concat(info)
             // });
 
-            setData( // produce 사용
-              produce(data, draft => {
-                draft.array.push(info);
-              })
-            )
+            // setData(
+            //     produce(data, (draft) => {
+            //         // immer 사용 후
+            //         draft.array.push(info);
+            //     })
+            // );
+
+            setData(
+                produce((draft) => {
+                    draft.array.push(info);
+                })
+            );
 
             setForm({
-                name: "",
                 username: "",
+                name: "",
             });
 
             nextId.current += 1;
         },
-        [data, form.name, form.username]
+        [data, form.name, form.username] // 배열안에있는 요소가 변경되었을 때만 새로운 함수 호출
     );
 
-    const onChange = useCallback((e) => {
-        const { name, value } = e.target;
-        // setForm({ ...form, [name]: [value] });
-        setForm(
-            produce((form, draft) => {
-                draft[name] = value;
-            })
-        );
-    }, [form]);
+    // input 수정을 위한 함수
+    const onChange = useCallback(
+        (event) => {
+            const { name, value } = event.target;
 
-    const onRemove = useCallback((id) => {
-        // setData({
-        //     ...data,
-        //     array: data.array.fillter((info) => info.id !== id),
-        // });
-        setData(
-          produce((data, draft) => {
-            draft.array.splice(draft.array.findIndex(info => info.id === id), 1);
-          })
-        )
-    }, [data]);
+            // setForm({ // immer 사용전
+            //     ...form,
+            //     [name]: [value] // 디스트럭처링으로 가져온 요소를 이렇게 []:[]식으로 써준다.
+            // });
+
+            // setForm(
+            //     // immer 사용후
+            //     produce(form, (draft) => {
+            //         draft[name] = value; // 사본뜬 draft[name]에 value 수정하기.
+            //     })
+            // );
+
+            setForm(
+                produce((draft) => {
+                    draft[name] = value; // 사본뜬 draft[name]에 value 수정하기.
+                })
+            );
+        },
+        [form]
+    );
+
+    const onRemove = useCallback(
+        (id) => {
+            // setData({ // immer 사용전
+            //     ...data,
+            //     array: data.array.filter(info => info.id !== id)
+            // });
+
+            // setData( // immer 사용후
+            //     produce(data, draft => {
+            //         draft.array.splice(info => info.id !== id, 1);
+            //     })
+            // );
+
+            setData(
+                // draft만 써서 사용가능. (ExampleCode 참고하기)
+                produce((draft) => {
+                    draft.array.splice((info) => info.id !== id, 1);
+                })
+            );
+        },
+        [data]
+    );
+
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -73,16 +108,14 @@ function App() {
                     value={form.username}
                     onChange={onChange}
                 />
-
                 <input
                     name="name"
                     placeholder="이름"
                     value={form.name}
                     onChange={onChange}
                 />
-                <button type="submit">등록</button>
+                <button type="submit">등록하기</button>
             </form>
-
             <div>
                 <ul>
                     {data.array.map((info) => (
