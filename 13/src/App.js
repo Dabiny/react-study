@@ -5,6 +5,9 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Article from "./pages/Article";
 import Articles from "./pages/Articles";
+import NotFound from "./pages/NotFound";
+import Login from "./pages/Login";
+import MyPage from "./pages/MyPage";
 
 function App() {
     return (
@@ -13,10 +16,13 @@ function App() {
             <Route index element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/profiles/:username" element={<Profile />} />
-          </Route>
             <Route path="/articles" element={<Articles />}>
                 <Route path=":id" element={<Article />} />
             </Route>
+          </Route>
+          <Route path="/login" element={<Login />} />
+          <Route path="/mypage" element={<MyPage />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
     );
 }
