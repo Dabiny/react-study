@@ -5,7 +5,7 @@ const Articles = () => {
     //     color: "green",
     //     fontSize: 21,
     // };
-    // navLink 사용하기
+    // // navLink 사용하기
     // return (
     //     <ul>
     //         <Outlet />
