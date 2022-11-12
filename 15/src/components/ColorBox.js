@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import ColorContext, { ColorConsumer } from "../contexts/color";
+import ColorContext, { ColorConsumer, ColorProvider } from "../contexts/color";
 
-//Consumer 사용예시
+// // Consumer 사용예시
 // const ColorBox = () => {
 //     return (
 //         <ColorConsumer>
@@ -51,3 +51,5 @@ const ColorBox = () => {
 };
 
 export default ColorBox;
+
+
