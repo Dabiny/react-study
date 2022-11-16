@@ -16,18 +16,18 @@ const TodoItem = ({ todo, onToggle, onRemove }) => {
 const Todos = ({
   input, // 인풋에 입력되는 텍스트
   todos, // 할일 목록이 들어있는 객체
-  changeInput,
-  insert,
-  toggle,
-  remove,
+  onChangeInput,
+  onInsert,
+  onToggle,
+  onRemove
 }) => {
   const onSubmit = (e) => {
     e.preventDefault();
-    insert(input);
-    changeInput('');
+    onInsert(input);
+    onChangeInput('');
   };
 
-  const onChange = e => changeInput(e.target.value);
+  const onChange = e => onChangeInput(e.target.value);
 
   return (
     <div>
@@ -40,8 +40,8 @@ const Todos = ({
             <TodoItem
                 todo={todo}
                 key={todo.id}
-                onToggle={toggle}
-                onRemove={remove}
+                onToggle={onToggle}
+                onRemove={onRemove}
             />
         ))}
       </div>
