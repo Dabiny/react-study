@@ -65,13 +65,13 @@ const initialState = {
 // 리듀서만들기
 const sample = handleActions(
     {
-        [GET_POST]: (state) => ({
-            ...state,
-            loading: {
-                ...state.loading,
-                GET_POST: true, // 요청 시작
-            },
-        }),
+        // [GET_POST]: (state) => ({
+        //     ...state,
+        //     loading: {
+        //         ...state.loading,
+        //         GET_POST: true, // 요청 시작
+        //     },
+        // }),
 
         [GET_POST_SUCCESS]: (state, action) => ({
             ...state,
@@ -82,21 +82,21 @@ const sample = handleActions(
             post: action.payload,
         }),
 
-        [GET_POST_FAILURE]: (state, action) => ({
-            ...state,
-            loading: {
-                ...state.loading,
-                GET_POST: false,
-            },
-        }),
+        // [GET_POST_FAILURE]: (state, action) => ({
+        //     ...state,
+        //     loading: {
+        //         ...state.loading,
+        //         GET_POST: false,
+        //     },
+        // }),
 
-        [GET_USERS]: (state) => ({
-            ...state,
-            loading: {
-                ...state.loading,
-                GET_USERS: true,
-            },
-        }),
+        // [GET_USERS]: (state) => ({
+        //     ...state,
+        //     loading: {
+        //         ...state.loading,
+        //         GET_USERS: true,
+        //     },
+        // }),
 
         [GET_USERS_SUCCESS]: (state, action) => ({
             ...state,
@@ -107,13 +107,13 @@ const sample = handleActions(
             users: action.payload,
         }),
 
-        [GET_USERS_FAILURE]: (state, action) => ({
-            ...state,
-            loading: {
-                ...state.loading,
-                GET_USERS: false,
-            },
-        }),
+        // [GET_USERS_FAILURE]: (state, action) => ({
+        //     ...state,
+        //     loading: {
+        //         ...state.loading,
+        //         GET_USERS: false,
+        //     },
+        // }),
     },
     initialState
 );
