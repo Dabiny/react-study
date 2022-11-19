@@ -13,6 +13,8 @@ export default function createRequestThunk(type, request) {
                 payload: response.data
             }); // 성공
             dispatch(finishLoading(type));
+            console.log('리스폰 데이터: ', response.data);
+            
         } catch (e) {
             dispatch({
                 type: FAILURE,

@@ -7,13 +7,13 @@ const INSERT = 'todos/INSERT'; // 새로운 todos 등록
 const TOGGLE = 'todos/TOGGLE'; // todo를 체크/ 체크 해제함.
 const REMOVE = 'todos/REMOVE'; // todo를 제거함.
 
-// 액션 생성함수 만들기
+// 액션 생성함수 만들기 (전)
 // export const changeInput = (input) => ({
 //   type: CHANGE_INPUT,
 //   input,
 // });
 
-// createAction 활용
+// createAction 활용 (후)
 export const changeInput = createAction(CHANGE_INPUT, (input) => input);
 
 let id = 3; // insert가 호출될 때마다 1씩 더해진다.

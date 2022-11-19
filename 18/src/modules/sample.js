@@ -11,7 +11,7 @@ const GET_USERS = "sample/GET_USERS";
 const GET_USERS_SUCCESS = "sample/GET_USERS_SUCCESS";
 const GET_USERS_FAILURE = "sample/GET_USERS_FAILURE";
 
-// thunk 함수 생성.
+// thunk 함수 생성. (액션생성함수)
 // thunk 함수는 내부에서 시작할 때, 성공했을 때, 실패했을 때 다른 액션을 디스패치한다.
 // export const getPost = id => async dispatch => {
 //     dispatch({ type: GET_POST }); // 요청을 시작한 것을 알린다.
@@ -79,7 +79,7 @@ const sample = handleActions(
                 ...state.loading,
                 GET_POST: false, // 요청 완료여서 다시 false로 바꿈.
             },
-            post: action.payload,
+            post: action.payload, //바뀔 값
         }),
 
         // [GET_POST_FAILURE]: (state, action) => ({

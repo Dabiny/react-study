@@ -14,9 +14,21 @@ const SampleContainer = ({
     loadingPost,
     loadingUsers
 }) => {
+    // useEffect(() => {
+    //     getPost(1); // id 파라미터를 건네주고 있음. 
+    //     getUsers(1); // 위와 동일
+    // }, [getPost, getUsers]);
     useEffect(() => {
-        getPost(1);
-        getUsers(1);
+        const fn = async () => {
+            try {
+                await getPost(1);
+                await getUsers(1);
+            }
+            catch(e) {
+                console.log(e);
+            }
+        }
+        fn();
     }, [getPost, getUsers]);
 
     return (
@@ -34,7 +46,7 @@ export default connect(
         post: sample.post,
         users: sample.users,
         loadingPost: loading['sample/GET_POST'],
-        loadingUser: loading['sample/GET_USERS']
+        loadingUsers: loading['sample/GET_USERS']
     }),
     {
         getPost,
