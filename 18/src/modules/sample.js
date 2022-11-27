@@ -55,7 +55,7 @@ const GET_USERS_FAILURE = "sample/GET_USERS_FAILURE";
 // export const getPost = createRequestThunk(GET_POST, api.getPost);
 // export const getUsers = createRequestThunk(GET_USERS, api.getUsers);
 
-// saga 사용
+// saga 사용 (액션함수 생성)
 export const getPost = createAction(GET_POST, id => id);
 export const getUsers = createAction(GET_USERS);
 
